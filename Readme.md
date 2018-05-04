@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Marina Lik](https://up.htmlacademy.ru/php/5/user/372633).
-* Наставник: [Алексей Стулов](https://up.htmlacademy.ru/profile/id25231).
+* Наставник: [Алексей Стулов](https://htmlacademy.ru/profile/id25231).
 
 ---
 
