@@ -3,8 +3,26 @@ $is_auth = (bool) rand(0, 1);
 
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
-$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
-$index_cat = 0;
+$categories = [
+    ['name' => 'Доски и лыжи',
+    'bg-view' => 'promo__item--boards'
+    ],
+    ['name' => 'Крепления',
+    'bg-view' => 'promo__item--attachment'
+    ],
+    ['name' => 'Ботинки',
+    'bg-view' => 'promo__item--boots'
+    ],
+    ['name' => 'Одежда',
+    'bg-view' => 'promo__item--clothing'
+    ],
+    ['name' => 'Инструменты',
+    'bg-view' => 'promo__item--tools'
+    ],
+    ['name' => 'Разное',
+    'bg-view' => 'promo__item--other'
+    ]
+];
 $lots = [
     ['title' => '2014 Rossignol District Snowboard',
     'category' => 'Доски и лыжи',
@@ -37,6 +55,11 @@ $lots = [
     'img' => 'img/lot-6.jpg'
     ]
 ];
+function format_price($price) {
+    $price = ceil($price);
+    $price = number_format($price, 0, '.', ' ');
+    return $price.' <b class="rub">р</b>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -88,24 +111,11 @@ $lots = [
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="all-lots.html">Доски и лыжи</a>
+            <?php foreach ($categories as $category): ?>
+            <li class="promo__item <?=$category['bg-view'];?>">
+                <a class="promo__link" href="all-lots.html"><?=$category['name'];?></a>
             </li>
-            <li class="promo__item promo__item--attachment">
-                <a class="promo__link" href="all-lots.html">Крепления</a>
-            </li>
-            <li class="promo__item promo__item--boots">
-                <a class="promo__link" href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="promo__item promo__item--clothing">
-                <a class="promo__link" href="all-lots.html">Одежда</a>
-            </li>
-            <li class="promo__item promo__item--tools">
-                <a class="promo__link" href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="promo__item promo__item--other">
-                <a class="promo__link" href="all-lots.html">Разное</a>
-            </li>
+        <?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -113,18 +123,18 @@ $lots = [
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <?php foreach ($lots as $key => $item): ?>
+            <?php foreach ($lots as $lot): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$item['img'];?>" width="350" height="260" alt="Сноуборд">
+                    <img src="<?=$lot['img'];?>" width="350" height="260" alt="Сноуборд">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$item['category'];?></span>
-                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$item['title'];?></a></h3>
+                    <span class="lot__category"><?=$lot['category'];?></span>
+                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$lot['title'];?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=$item['price'];?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=format_price($lot['price']);?></span>
                         </div>
                         <div class="lot__timer timer">
 
@@ -140,30 +150,11 @@ $lots = [
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <?php while ($index_cat < count($categories)): ?>
+            <?php foreach ($categories as $category): ?>
                 <li class="nav__item">
-                    <a href="all-lots.html"><?=$categories[$index_cat];?></a>
+                    <a href="all-lots.html"><?=$category['name'];?></a>
                 </li>
-            <?php $index_cat++; ?>
-            <?php endwhile; ?>
-            <!-- <li class="nav__item">
-                <a href="all-lots.html">Доски и лыжи</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Крепления</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Одежда</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Разное</a>
-            </li> -->
+            <?php  endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
