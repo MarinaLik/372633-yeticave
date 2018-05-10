@@ -2,47 +2,47 @@ CREATE DATABASE yeticave DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general
 USE yeticave;
 
 CREATE TABLE users (
-id INT AUTO_INCREMENT PRIMARY KEY,
-email CHAR(128),
-password CHAR(64),
-name CHAR(128),
+user_id INT AUTO_INCREMENT PRIMARY KEY,
+email VARCHAR(128),
+password VARCHAR(64),
+name VARCHAR(128),
 date_log DATETIME,
-avatar CHAR(255),
+avatar VARCHAR(255),
 contact TEXT
 );
 
 CREATE TABLE categories (
-id INT AUTO_INCREMENT PRIMARY KEY,
-name CHAR(128)
+category_id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(128)
 );
 
 CREATE TABLE lots (
-id INT AUTO_INCREMENT PRIMARY KEY,
+lot_id INT AUTO_INCREMENT PRIMARY KEY,
 category_id INT,
-title CHAR(255),
+title VARCHAR(255),
 description TEXT,
-image CHAR(255),
+image VARCHAR(255),
 date_start DATETIME,
 date_end DATE,
 price_start INT,
 rate_step INT,
-author_id INT,
-victor_id INT
+user_id INT,
+victor_id INT,
+FOREIGN KEY (category_id) REFERENCES categories(category_id),
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (victor_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE rates (
-id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE bets (
+bet_id INT AUTO_INCREMENT PRIMARY KEY,
 date_add DATETIME,
 cost INT,
 user_id INT,
-lot_id INT
+lot_id INT,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (lot_id) REFERENCES lots(lot_id)
 );
 
 CREATE UNIQUE INDEX email ON users(email);
-CREATE INDEX u_lots ON lots(author_id);
-CREATE INDEX u_rates ON rates(user_id);
-CREATE INDEX lot_cat ON lots(category_id);
 CREATE INDEX lot_tit ON lots(title);
-CREATE INDEX lot_start ON lots(date_start);
-CREATE INDEX lot_price ON lots(price_start);
-CREATE INDEX lot_rates ON rates(lot_id, cost);
+CREATE INDEX lot_bets ON bets(lot_id, cost);
