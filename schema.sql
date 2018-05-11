@@ -3,12 +3,12 @@ USE yeticave;
 
 CREATE TABLE users (
 user_id INT AUTO_INCREMENT PRIMARY KEY,
-email VARCHAR(128),
-password VARCHAR(64),
-name VARCHAR(128),
+email VARCHAR(128) NOT NULL,
+password VARCHAR(64) NOT NULL,
+name VARCHAR(128) NOT NULL,
 date_log DATETIME,
 avatar VARCHAR(255),
-contact TEXT
+contact TEXT NOT NULL
 );
 
 CREATE TABLE categories (
@@ -18,14 +18,14 @@ name VARCHAR(128)
 
 CREATE TABLE lots (
 lot_id INT AUTO_INCREMENT PRIMARY KEY,
-category_id INT,
-title VARCHAR(255),
-description TEXT,
-image VARCHAR(255),
+category_id INT NOT NULL,
+title VARCHAR(255) NOT NULL,
+description TEXT NOT NULL,
+image VARCHAR(255) NOT NULL,
 date_start DATETIME,
-date_end DATE,
-price_start INT,
-rate_step INT,
+date_end DATE NOT NULL,
+price_start INT NOT NULL,
+rate_step INT NOT NULL,
 user_id INT,
 victor_id INT,
 FOREIGN KEY (category_id) REFERENCES categories(category_id),
