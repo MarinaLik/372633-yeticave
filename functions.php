@@ -27,12 +27,10 @@ function time_counter($time) {
     $secs_to_end = $ts_time_end - time();
     $days_to_end = floor($secs_to_end / 86400);
     $time_left = '';
-    if ($secs_to_end <= 0) {
-            $time_left = '0 ч 0 мин';
-    } elseif ($days_to_end > 7) {
-        $data = date_create('@'.$ts_time_end);
+    if ($days_to_end > 7) {
+        $data = date_create($time);
         $time_left = date_format($data, 'd-m-y');
-    } elseif ($days_to_end < 1) {
+    } elseif ($days_to_end >= 0 and $days_to_end < 1) {
         $hours = floor($secs_to_end / 3600);
         $minutes = floor(($secs_to_end % 3600) / 60);
         $time_left = $hours.' ч '.$minutes.' мин';
