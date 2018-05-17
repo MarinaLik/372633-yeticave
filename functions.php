@@ -1,13 +1,6 @@
 <?php
 date_default_timezone_set("Europe/Moscow");
 
-// форматирование цены лота
-function format_price($price) {
-    $price = ceil($price);
-    $price = number_format($price, 0, '.', ' ');
-    return $price.' <b class="rub">р</b>';
-}
-
 // шаблонизатор
 function include_template($file, $data) {
     $content = '';
@@ -40,3 +33,32 @@ function time_counter($time) {
     return $time_left;
 }
 
+// форматирование цены лота
+// function format_price($price) {
+//     $price = ceil($price);
+//     $price = number_format($price, 0, '.', ' ');
+//     return $price.' <b class="rub">р</b>';
+// }
+
+// значение цены
+function price_value($amount_bet) {
+    if ($amount_bet > 0) {
+        return 'ставок ' . $amount_bet;
+    }
+    return 'Стартовая цена';
+}
+
+// определение максимальной цены с форматированием цены лота
+function max_price($pr_max, $pr_start) {
+    $price = ($pr_max != NULL) ? ceil($pr_max) : ceil($pr_start);
+    $format_price = number_format($price, 0, '.', ' ');
+    return $format_price;
+}
+
+// определение минимальной ставки с форматированием
+function min_bet($pr_max, $pr_start, $step) {
+    $cost_start = ($pr_max != NULL) ? ceil($pr_max) : ceil($pr_start);
+    $cost_min = floor($cost_start + $step);
+    $cost_min = number_format($cost_min, 0, '.', ' ');
+    return $cost_min;
+}
