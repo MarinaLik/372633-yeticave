@@ -2,13 +2,13 @@ USE yeticave;
 INSERT INTO categories (name, bg_view) VALUES ('Доски и лыжи', 'boards'),('Крепления', 'attachment'),('Ботинки', 'boots'),('Одежда', 'clothing'),('Инструменты', 'tools'),('Разное', 'other');
 
 INSERT INTO users (email, password, name, date_log, contact) VALUES
-('kostya@mail.ru', 'kostya123', 'Константин', '2018-02-10 10:05:00', '+79261232233'),
-('murz@mail.ru', 'mur123z', 'Мария Зубкова', '2018-04-16 20:15:56', '+79295559900'),
-('vano567@mail.ru', 'qwe765van', 'Иван', '2018-05-02 14:30:32', '+79163336789');
+('kostya@mail.ru', '$2y$10$OqvsKHQwr0Wk6FMZDoHo1uHoXd4UdxJG/5UDtUiie00XaxMHrW8ka', 'Константин', '2018-02-10 10:05:00', '+79261232233'),
+('murz@mail.ru', '$2y$10$bWtSjUhwgggtxrnJ7rxmIe63ABubHQs0AS0hgnOo41IEdMHkYoSVa', 'Мария Зубкова', '2018-04-16 20:15:56', '+79295559900'),
+('vano567@mail.ru', '$2y$10$2OxpEH7narYpkOT1H5cApezuzh10tZEEQ2axgFOaKW.55LxIJBgWW', 'Иван', '2018-05-02 14:30:32', '+79163336789');
 
 INSERT INTO lots (category_id, title, description, image, date_start, date_end, price_start, rate_step, user_id) VALUES
-(1, '2014 Rossignol District Snowboard', 'Отличные лыжи', 'img/lot-1.jpg', '2018-03-20 10:05:00', '2018-05-20', 10999, 300, 1),
-(2, 'Union Mens Pro', '2015 года размер L/XL', 'img/lot-3.jpg', '2018-04-20 10:05:00', '2018-05-10', 8000, 200, 2),
+(1, '2014 Rossignol District Snowboard', 'Отличные лыжи', 'img/lot-1.jpg', '2018-04-15 00:00:00', '2018-05-25', 10999, 300, 1),
+(2, 'Union Mens Pro', '2015 года размер L/XL', 'img/lot-3.jpg', '2018-04-20 10:05:00', '2018-05-29', 8000, 200, 2),
 (3, 'Ботинки DC Mutiny Charocal', 'Крутые ботинки для сноуборда', 'img/lot-4.jpg', '2018-05-02 15:05:00', '2018-05-27', 10999, 300, 1),
 (1, 'DC Ply Mens 2016/2017 Snowboard', '2016/2017 Snowboard новый, не использовался', 'img/lot-2.jpg', '2018-05-04 10:15:00', '2018-06-04', 15999, 500, 2),
 (4, 'Куртка DC Mutiny Charocal', 'Куртка теплая и убодная', 'img/lot-5.jpg', '2018-05-09 18:05:00', '2018-06-09', 7500, 500, 3),
@@ -30,7 +30,7 @@ UPDATE lots SET title = 'Крепления Union Contact Pro 2015' WHERE lot_id
 -- получить список самых свежих ставок для лота по его идентификатору
 SELECT cost FROM bets WHERE lot_id = 1 ORDER BY date_add;
 -- получить самые новые, открытые лоты. Каждый лот должен включать название, стартовую цену, ссылку на изображение, цену, количество ставок, название категории
-SELECT lot_id, date_start, title, price_start, image, categories.name, COUNT(bet_id) AS total_bet, MAX(bets.cost) AS max_price FROM lots JOIN categories USING (category_id) LEFT JOIN bets USING (lot_id) WHERE date_end > NOW() GROUP BY lot_id ORDER BY date_start DESC;
+SELECT lot_id, date_start, title, price_start, image, categories.name, COUNT(bet_id) AS amount_bet, MAX(bets.cost) AS max_price FROM lots JOIN categories USING (category_id) LEFT JOIN bets USING (lot_id) WHERE date_end > NOW() GROUP BY lot_id ORDER BY date_start DESC;
 -- добавлен новый лот
 INSERT INTO lots (category_id, title, description, image, date_start, date_end, price_start, rate_step, user_id) VALUES
 (2, 'Union Contact Black 2016', 'размер M/L', 'img/lot-3.jpg', NOW(), '2018-06-10', 8000, 200, 2);

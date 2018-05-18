@@ -13,7 +13,8 @@ contact TEXT NOT NULL
 
 CREATE TABLE categories (
 category_id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(128)
+name VARCHAR(128),
+bg_view VARCHAR(128)
 );
 
 CREATE TABLE lots (

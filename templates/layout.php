@@ -21,7 +21,6 @@
         <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
         <?php if ($user['is_auth']): ?>
         <div class="user-menu__image">
             <img src="<?=$user['user_avatar']; ?>" width="40" height="40" alt="Пользователь">
@@ -43,9 +42,7 @@
     </div>
 </header>
 
-<main class="container">
-    <?=$content;?>
-</main>
+<?=$content;?>
 
 <footer class="main-footer">
     <nav class="nav">
