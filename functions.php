@@ -33,12 +33,12 @@ function time_counter($time) {
     return $time_left;
 }
 
-// форматирование цены лота
-// function format_price($price) {
-//     $price = ceil($price);
-//     $price = number_format($price, 0, '.', ' ');
-//     return $price.' <b class="rub">р</b>';
-// }
+// форматирование цены
+function format_price($price) {
+    $price = floor($price);
+    $price = number_format($price, 0, '.', ' ');
+    return $price;
+}
 
 // значение цены
 function price_value($amount_bet) {
@@ -48,17 +48,17 @@ function price_value($amount_bet) {
     return 'Стартовая цена';
 }
 
-// определение максимальной цены с форматированием цены лота
+// определение максимальной цены
 function max_price($pr_max, $pr_start) {
-    $price = ($pr_max != NULL) ? ceil($pr_max) : ceil($pr_start);
-    $format_price = number_format($price, 0, '.', ' ');
-    return $format_price;
+    $price_max = ($pr_max != NULL) ? $pr_max : $pr_start;
+    $price_max = format_price($price_max);
+    return $price_max;
 }
 
-// определение минимальной ставки с форматированием
+// определение минимальной ставки
 function min_bet($pr_max, $pr_start, $step) {
-    $cost_start = ($pr_max != NULL) ? ceil($pr_max) : ceil($pr_start);
-    $cost_min = floor($cost_start + $step);
-    $cost_min = number_format($cost_min, 0, '.', ' ');
+    $cost_start = ($pr_max != NULL) ? $pr_max : $pr_start;
+    $cost_min = $cost_start + $step;
+    $cost_min = format_price($cost_min);
     return $cost_min;
 }
