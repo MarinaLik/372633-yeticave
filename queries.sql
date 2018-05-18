@@ -7,8 +7,8 @@ INSERT INTO users (email, password, name, date_log, contact) VALUES
 ('vano567@mail.ru', '$2y$10$2OxpEH7narYpkOT1H5cApezuzh10tZEEQ2axgFOaKW.55LxIJBgWW', 'Иван', '2018-05-02 14:30:32', '+79163336789');
 
 INSERT INTO lots (category_id, title, description, image, date_start, date_end, price_start, rate_step, user_id) VALUES
-(1, '2014 Rossignol District Snowboard', 'Отличные лыжи', 'img/lot-1.jpg', '2018-03-20 10:05:00', '2018-05-20', 10999, 300, 1),
-(2, 'Union Mens Pro', '2015 года размер L/XL', 'img/lot-3.jpg', '2018-04-20 10:05:00', '2018-05-10', 8000, 200, 2),
+(1, '2014 Rossignol District Snowboard', 'Отличные лыжи', 'img/lot-1.jpg', '2018-04-15 00:00:00', '2018-05-25', 10999, 300, 1),
+(2, 'Union Mens Pro', '2015 года размер L/XL', 'img/lot-3.jpg', '2018-04-20 10:05:00', '2018-05-29', 8000, 200, 2),
 (3, 'Ботинки DC Mutiny Charocal', 'Крутые ботинки для сноуборда', 'img/lot-4.jpg', '2018-05-02 15:05:00', '2018-05-27', 10999, 300, 1),
 (1, 'DC Ply Mens 2016/2017 Snowboard', '2016/2017 Snowboard новый, не использовался', 'img/lot-2.jpg', '2018-05-04 10:15:00', '2018-06-04', 15999, 500, 2),
 (4, 'Куртка DC Mutiny Charocal', 'Куртка теплая и убодная', 'img/lot-5.jpg', '2018-05-09 18:05:00', '2018-06-09', 7500, 500, 3),
