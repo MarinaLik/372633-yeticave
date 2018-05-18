@@ -33,6 +33,25 @@ function time_counter($time) {
     return $time_left;
 }
 
+// формат времени добавления ставки
+function time_bet($bet_time)
+{
+    $time_left = time() - $bet_time;
+    $time_add = '';
+    if (floor($time_left / 86400) >= 1) {
+        $data = date_create('@'.$bet_time);
+
+        $time_add = date_format($data, 'd-m-y H:i');
+    }
+    elseif (floor($time_left / 3600) >= 1) {
+        $time_add = floor($time_left / 3600). ' ч назад';
+    }
+    else {
+        $time_add = floor($time_left / 60). ' мин назад';
+    }
+    return $time_add;
+}
+
 // форматирование цены
 function format_price($price) {
     $price = floor($price);
