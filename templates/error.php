@@ -1,5 +1,5 @@
 <div class="container main-footer">
-    <h2>Произошла ошибка</h2>
+    <h2>Извините, произошла ошибка</h2>
         <div>
             <p><?= $error; ?></p>
         </div>

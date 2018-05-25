@@ -15,8 +15,10 @@ INSERT INTO lots (category_id, title, description, image, date_start, date_end, 
 (6, 'Маска Oakley Canopy', '2015 года размер L/XL', 'img/lot-6.jpg', '2018-05-10 12:25:00', '2018-05-30', 5400, 200, 2);
 
 INSERT INTO bets (date_add, cost, user_id, lot_id) VALUES
-('2018-03-21 12:05:00', 11500, 2, 1),
-('2018-03-22 18:05:00', 11800, 3, 1);
+('2018-05-18 12:05:00', 11500, 2, 1),
+('2018-03-22 18:05:00', 11800, 3, 1),
+('2018-05-20 12:05:00', 5900, 1, 6),
+('2018-03-22 18:05:00', 6200, 3, 6);
 
 -- добавлен аватар одному пользователю
 UPDATE users SET avatar = 'img/user.jpg' WHERE email = 'kostya@mail.ru';

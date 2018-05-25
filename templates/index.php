@@ -16,6 +16,7 @@
     </div>
     <ul class="lots__list">
         <?php foreach ($lots as $lot): ?>
+
         <li class="lots__item lot">
             <div class="lot__image">
                 <img src="<?=$lot['image'];?>" width="350" height="260" alt="Сноуборд">
@@ -37,4 +38,11 @@
         <?php  endforeach; ?>
     </ul>
 </section>
+<ul class="pagination-list">
+      <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
+      <?php for ($i=1; $i <= $pages; $i++): ?>
+      <li class="pagination-item"><a href="/?page=<?= $i;?>"><?= $i;?></a></li>
+        <?php  endfor; ?>
+      <li class="pagination-item pagination-item-next"><a href="#">Вперед</a></li>
+    </ul>
 </main>

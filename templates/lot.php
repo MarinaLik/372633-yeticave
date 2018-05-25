@@ -26,16 +26,16 @@
           <div class="lot-item__cost-state">
             <div class="lot-item__rate">
               <span class="lot-item__amount">Текущая цена</span>
-              <span class="lot-item__cost"><?=max_price($bets[0]['price'], $lot['price_start'])?></span>
+              <span class="lot-item__cost"><?=max_price($bets[0]['cost'], $lot['price_start'])?></span>
             </div>
             <div class="lot-item__min-cost">
-              Мин. ставка <span><?=min_bet($bets[0]['price'], $lot['price_start'], $lot['rate_step'])?> р</span>
+              Мин. ставка <span><?=min_bet($bets[0]['cost'], $lot['price_start'], $lot['rate_step'])?> р</span>
             </div>
           </div>
           <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
             <p class="lot-item__form-item">
               <label for="cost">Ваша ставка</label>
-              <input id="cost" type="number" name="cost" placeholder="<?=min_bet($bets[0]['price'], $lot['price_start'], $lot['rate_step'])?>">
+              <input id="cost" type="number" name="cost" placeholder="<?=min_bet($bets[0]['cost'], $lot['price_start'], $lot['rate_step'])?>">
             </p>
             <button type="submit" class="button">Сделать ставку</button>
           </form>
@@ -46,8 +46,8 @@
             <?php foreach ($bets as $bet): ?>
             <tr class="history__item">
               <td class="history__name"><?=$bet['name'];?></td>
-              <td class="history__price"><?=format_price($bet['price']);?> р</td>
-              <td class="history__time"><?=time_bet($bet['ts']);?></td>
+              <td class="history__price"><?=format_price($bet['cost']);?> р</td>
+              <td class="history__time"><?=time_bet($bet['date_add']);?></td>
             </tr>
             <?php  endforeach; ?>
           </table>
