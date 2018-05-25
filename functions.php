@@ -34,13 +34,12 @@ function time_counter($time) {
 }
 
 // формат времени добавления ставки
-function time_bet($bet_time)
-{
-    $time_left = time() - $bet_time;
+function time_bet($bet_time) {
+    $bet_time_sec = strtotime($bet_time);
+    $time_left = time() - $bet_time_sec;
     $time_add = '';
     if (floor($time_left / 86400) >= 1) {
-        $data = date_create('@'.$bet_time);
-
+        $data = date_create('@'.$bet_time_sec);
         $time_add = date_format($data, 'd-m-y H:i');
     }
     elseif (floor($time_left / 3600) >= 1) {
@@ -80,4 +79,15 @@ function min_bet($pr_max, $pr_start, $step) {
     $cost_min = $cost_start + $step;
     $cost_min = format_price($cost_min);
     return $cost_min;
+}
+
+// проверка на число
+function is_digit($digit) {
+    if(is_int($digit)) {
+    return true;
+    } elseif(is_string($digit)) {
+    return ctype_digit($digit);
+    } else {
+    return false;
+    }
 }
